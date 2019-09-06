@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Graphs and Trees</string>
+    <string name="title_activity_main">Maps</string>
+
+    <string name="router_title">Maps</string>
+    <string name="router_name">Maps</string>
+    <string name="router_description">Maps</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

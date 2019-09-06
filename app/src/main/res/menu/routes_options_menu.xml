@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dijkstra_item"
+        android:title="Dijkstra"/>
+    <item
+        android:id="@+id/floyd_item"
+        android:title="Floyd"/>
+    <item
+        android:id="@+id/route3_item"
+        android:title="Route 3"/>
+</menu>

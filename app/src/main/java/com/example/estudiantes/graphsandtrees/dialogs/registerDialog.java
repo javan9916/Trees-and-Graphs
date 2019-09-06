@@ -1,0 +1,83 @@
+package com.example.estudiantes.graphsandtrees.dialogs;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatDialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.example.estudiantes.graphsandtrees.R;
+
+public class registerDialog extends AppCompatDialogFragment {
+
+    private EditText editTextID;
+    private EditText editTextFecha;
+    private EditText editTextTipo;
+    private Spinner spinnerEstado;
+    private RegisterDialogListener registerListener;
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.new_register_layout, null);
+
+
+        builder.setView(view)
+                .setTitle("Registro Nuevo")
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final int ID = ParseInt(editTextID.getText().toString());
+                        final String fecha = editTextFecha.getText().toString();
+                        final String tipo = editTextTipo.getText().toString();
+                        final String estado = spinnerEstado.getSelectedItem().toString();
+                        registerListener.applyTexts(ID, fecha, tipo, estado);
+                    }
+                });
+        editTextID = view.findViewById(R.id.editTextId);
+        editTextFecha = view.findViewById(R.id.editTextFecha);
+        editTextTipo = view.findViewById(R.id.editTextTipo);
+        spinnerEstado = view.findViewById(R.id.spinnerEstado);
+
+        return builder.create();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            registerListener = (RegisterDialogListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + "Se tiene que implementar RegisterDialog Listener");
+        }
+    }
+
+    public interface RegisterDialogListener {
+        void applyTexts(int id, String fecha, String tipo, String estado);
+    }
+
+    int ParseInt(String strNumber) {
+        if ((strNumber != null) && (strNumber.length() > 0)) {
+            try {
+                return Integer.parseInt(strNumber);
+            } catch(Exception e) {
+                return -1;
+            }
+        }
+        else return -1;
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/delete_item"
+        android:title="Eliminar"/>
+    <item
+        android:id="@+id/edit_item"
+        android:title="Editar"/>
+    <item
+        android:id="@+id/inspect_item"
+        android:title="Inspeccionar"/>
+    <item
+        android:id="@+id/register"
+        android:title="Crear registro"/>
+    <item
+        android:id="@+id/search_item"
+        android:title="Buscar Registros"/>
+</menu>
